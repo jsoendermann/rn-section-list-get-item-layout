@@ -1,6 +1,6 @@
 # React Native SectionList getItemLayout
 
-This package provides a function that helps you construct the `getItemLayout` function for your `SectionList`s. For an explanation of why this exists, see [this post](https://medium.com/@jsoendermann/sectionlist-and-getitemlayout-2293b0b916fb). This package is meant to be used like this:
+This package provides a function that helps you construct the `getItemLayout` function for your `SectionList`s. For an explanation of why this exists, see [this post](https://medium.com/@jsoendermann/sectionlist-and-getitemlayout-2293b0b916fb). It's meant to be used like this:
 
 ```javascript
 import sectionListGetItemLayout from 'react-native-section-list-get-item-layout'
