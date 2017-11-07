@@ -26,7 +26,8 @@ export interface Parameters {
   ) => number
   getSeparatorHeight?: (sectionIndex: number, rowIndex: number) => number
   getSectionHeaderHeight?: (sectionIndex: number) => number
-  getSectionFooterHeight?: (sectionIndex: number) => number
+  getSectionFooterHeight?: (sectionIndex: number) => number,
+  listHeaderHeight: number
 }
 
 export default ({
@@ -34,11 +35,12 @@ export default ({
   getSeparatorHeight = () => 0,
   getSectionHeaderHeight = () => 0,
   getSectionFooterHeight = () => 0,
+  listHeaderHeight = 0,
 }: Parameters) => (data: SectionListDataProp, index: number) => {
   let i = 0
   let sectionIndex = 0
   let elementPointer: ListElement = { type: 'SECTION_HEADER' }
-  let offset = 0
+  let offset = listHeaderHeight
 
   while (i < index) {
     switch (elementPointer.type) {
