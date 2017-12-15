@@ -27,7 +27,7 @@ export interface Parameters {
   getSeparatorHeight?: (sectionIndex: number, rowIndex: number) => number
   getSectionHeaderHeight?: (sectionIndex: number) => number
   getSectionFooterHeight?: (sectionIndex: number) => number,
-  listHeaderHeight: () => number | number
+  listHeaderHeight: number | (() => number);
 }
 
 export default ({
