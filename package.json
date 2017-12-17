@@ -1,7 +1,8 @@
 {
   "name": "react-native-section-list-get-item-layout",
-  "version": "2.1.0",
-  "description": "This package simplifies constructing the getItemLayout prop for react native SectionLists.",
+  "version": "2.2.0",
+  "description":
+    "This package simplifies constructing the getItemLayout prop for react native SectionLists.",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "license": "Apache-2.0",
