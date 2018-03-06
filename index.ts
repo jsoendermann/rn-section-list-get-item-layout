@@ -105,6 +105,8 @@ export default ({
     case 'SECTION_FOOTER':
       length = getSectionFooterHeight(sectionIndex)
       break
+    default:
+      throw new Error('Unknown elementPointer.type')
   }
 
   return { length, offset, index }
