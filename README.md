@@ -14,10 +14,10 @@ class MyComponent extends React.Component {
       getItemHeight: (rowData, sectionIndex, rowIndex) => sectionIndex === 0 ? 100 : 50,
 
       // These four properties are optional
-      getSeparatorHeight: () => 1 / PixelRatio.get(), // The height of your separators
-      getSectionHeaderHeight: () => 20, // The height of your section headers
-      getSectionFooterHeight: () => 10, // The height of your section footers
-      listHeaderHeight: 40, // The height of your list header
+      getSeparatorHeight: () => 1 / PixelRatio.get(), // The height of your separators, default = 0
+      getSectionHeaderHeight: () => 20, // The height of your section headers, default = 0
+      getSectionFooterHeight: () => 10, // The height of your section footers, default = 0
+      listHeaderHeight: 40, // The height of your list header, default = 0
     })
   }
 
@@ -29,5 +29,30 @@ class MyComponent extends React.Component {
       />
     )
   }
+}
+```
+
+Other example with a Function Component using TypeScript:
+
+```tsx
+import sectionListGetItemLayout from 'react-native-section-list-get-item-layout'
+
+interface ExampleItem {
+  title: string
+  isBig: boolean
+}
+
+const getItemLayout = sectionListGetItemLayout<ExampleItem>({
+  getItemHeight: (rowData, sectionIndex, rowIndex) => rowData.isBig ? 120: 80,
+  // additional optional config params: see above
+})
+
+const MyComponent: React.FC = () => {
+  return (
+    <SectionList<ExampleItem>
+      {...otherStuff}
+      getItemLayout={getItemLayout}
+    />
+  )
 }
 ```

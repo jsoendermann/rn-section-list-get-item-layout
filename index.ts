@@ -1,7 +1,4 @@
-export type SectionListDataProp = Array<{
-  title: string
-  data: any[]
-}>
+import { SectionListData } from "react-native"
 
 interface SectionHeader {
   type: 'SECTION_HEADER'
@@ -18,9 +15,9 @@ interface SectionFooter {
 
 type ListElement = SectionHeader | Row | SectionFooter
 
-export interface Parameters {
+export interface Parameters<T> {
   getItemHeight: (
-    rowData: any,
+    rowData: T,
     sectionIndex: number,
     rowIndex: number,
   ) => number
@@ -30,13 +27,13 @@ export interface Parameters {
   listHeaderHeight?: number | (() => number)
 }
 
-export default ({
+export default <T = any>({
   getItemHeight,
   getSeparatorHeight = () => 0,
   getSectionHeaderHeight = () => 0,
   getSectionFooterHeight = () => 0,
   listHeaderHeight = 0,
-}: Parameters) => (data: SectionListDataProp, index: number) => {
+}: Parameters<T>) => (data: SectionListData<T>[] | null, index: number) => {
   let i = 0
   let sectionIndex = 0
   let elementPointer: ListElement = { type: 'SECTION_HEADER' }
@@ -44,6 +41,10 @@ export default ({
     typeof listHeaderHeight === 'function'
       ? listHeaderHeight()
       : listHeaderHeight
+
+  if (!data) {
+    return { length: 0, offset, index }
+  }
 
   while (i < index) {
     switch (elementPointer.type) {
